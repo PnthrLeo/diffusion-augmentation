@@ -1,0 +1,16 @@
+# Ignore log files
+*.log
+
+# Ignore model checkpoints
+*.ckpt
+*.safetensors
+*.bin
+*.pth
+models/comfyUI_models/midas
+models/comfyUI_models/mmdets
+models/comfyUI_models/onnx
+models/comfyUI_models/sams
+models/comfyUI_models/ultralytics
+
+# Ignore data
+data

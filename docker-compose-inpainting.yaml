@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    command: python inpainting_scripts/${INPAINTING_SCRIPT} --dataset_path /app/${DATASET_PATH} --inpainting_output_path /app/${INPAINTING_OUTPUT_PATH} --inp_img_per_orig_img ${INP_IMG_PER_ORIG_IMG}
+    network_mode: "host"
+    depends_on:
+      comfyui:
+        condition: service_healthy
+    volumes:
+      - ./data:/app/data
+  comfyui:
+    build: .
+    command: bash -c "python comfyUI/main.py --disable-smart-memory"
+    network_mode: "host"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    volumes:
+      - ./models/comfyUI_models:/app/comfyUI/models
+      - ./models/IPAdapter_models:/app/comfyUI/custom_nodes/ComfyUI_IPAdapter_plus/models
+      - ./data:/app/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8188"]
+      interval: 10s
+      timeout: 10s
+      retries: 15

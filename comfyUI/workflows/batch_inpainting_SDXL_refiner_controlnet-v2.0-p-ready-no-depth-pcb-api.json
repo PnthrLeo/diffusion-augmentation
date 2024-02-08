@@ -1,0 +1,506 @@
+{
+  "3": {
+    "inputs": {
+      "seed": [
+        "98",
+        0
+      ],
+      "steps": 30,
+      "cfg": 8,
+      "sampler_name": "ddim",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": [
+        "131",
+        0
+      ],
+      "positive": [
+        "88",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "33",
+        0
+      ]
+    },
+    "class_type": "KSampler"
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple"
+  },
+  "7": {
+    "inputs": {
+      "text": [
+        "106",
+        0
+      ],
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "11": {
+    "inputs": {
+      "control_net_name": "control-lora-depth-rank256-sdxl.safetensors"
+    },
+    "class_type": "ControlNetLoader"
+  },
+  "12": {
+    "inputs": {
+      "strength": 1,
+      "conditioning": [
+        "76",
+        0
+      ],
+      "control_net": [
+        "11",
+        0
+      ],
+      "image": [
+        "110",
+        0
+      ]
+    },
+    "class_type": "ControlNetApply"
+  },
+  "15": {
+    "inputs": {
+      "ckpt_name": "sd_xl_refiner_1.0.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple"
+  },
+  "17": {
+    "inputs": {
+      "text": [
+        "106",
+        0
+      ],
+      "clip": [
+        "15",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "18": {
+    "inputs": {
+      "seed": [
+        "98",
+        0
+      ],
+      "steps": 10,
+      "cfg": 8,
+      "sampler_name": "ddim",
+      "scheduler": "normal",
+      "denoise": 0.15,
+      "model": [
+        "15",
+        0
+      ],
+      "positive": [
+        "79",
+        0
+      ],
+      "negative": [
+        "17",
+        0
+      ],
+      "latent_image": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "KSampler"
+  },
+  "20": {
+    "inputs": {
+      "samples": [
+        "18",
+        0
+      ],
+      "vae": [
+        "15",
+        2
+      ]
+    },
+    "class_type": "VAEDecode"
+  },
+  "28": {
+    "inputs": {
+      "channel": "red",
+      "image": [
+        "119",
+        0
+      ]
+    },
+    "class_type": "ImageToMask"
+  },
+  "32": {
+    "inputs": {
+      "pixels": [
+        "115",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ]
+    },
+    "class_type": "VAEEncode"
+  },
+  "33": {
+    "inputs": {
+      "samples": [
+        "32",
+        0
+      ],
+      "mask": [
+        "28",
+        0
+      ]
+    },
+    "class_type": "SetLatentNoiseMask"
+  },
+  "49": {
+    "inputs": {
+      "mode": "single_image",
+      "index": 159,
+      "label": "Batch 001",
+      "path": "C:\\Users\\PnthrLeo\\Desktop\\yolo-pcb-defects\\data\\pcb\\pcb-orig\\train\\images",
+      "pattern": "*",
+      "allow_RGBA_output": "false",
+      "filename_text_extension": "false"
+    },
+    "class_type": "Load Image Batch"
+  },
+  "55": {
+    "inputs": {
+      "mode": "single_image",
+      "index": 159,
+      "label": "Batch 001",
+      "path": "C:\\Users\\PnthrLeo\\Desktop\\yolo-pcb-defects\\data\\pcb\\pcb-orig\\train\\masks",
+      "pattern": "*",
+      "allow_RGBA_output": "false",
+      "filename_text_extension": "true"
+    },
+    "class_type": "Load Image Batch"
+  },
+  "72": {
+    "inputs": {
+      "filename": [
+        "126",
+        0
+      ],
+      "path": "C:\\Users\\PnthrLeo\\Desktop\\yolo-pcb-defects\\data\\pcb\\pcb-inpainting\\train\\images",
+      "extension": "png",
+      "steps": 40,
+      "cfg": 7,
+      "modelname": "sd_xl_base_1.0.safetensors",
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "positive": "unknown",
+      "negative": "unknown",
+      "seed_value": 0,
+      "width": 512,
+      "height": 512,
+      "lossless_webp": true,
+      "quality_jpeg_or_webp": 100,
+      "counter": 0,
+      "time_format": "%Y-%m-%d-%H%M%S",
+      "images": [
+        "125",
+        0
+      ]
+    },
+    "class_type": "Save Image w/Metadata"
+  },
+  "76": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "crop_w": 0,
+      "crop_h": 0,
+      "target_width": 8192,
+      "target_height": 8192,
+      "text_g": [
+        "104",
+        0
+      ],
+      "text_l": [
+        "104",
+        0
+      ],
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncodeSDXL"
+  },
+  "79": {
+    "inputs": {
+      "ascore": 6.34,
+      "width": 1024,
+      "height": 1024,
+      "text": [
+        "104",
+        0
+      ],
+      "clip": [
+        "15",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncodeSDXLRefiner"
+  },
+  "87": {
+    "inputs": {
+      "control_net_name": "controlnet-canny-sdxl-1.0.safetensors"
+    },
+    "class_type": "ControlNetLoader"
+  },
+  "88": {
+    "inputs": {
+      "strength": 1,
+      "conditioning": [
+        "12",
+        0
+      ],
+      "control_net": [
+        "87",
+        0
+      ],
+      "image": [
+        "89",
+        0
+      ]
+    },
+    "class_type": "ControlNetApply"
+  },
+  "89": {
+    "inputs": {
+      "enable_threshold": "false",
+      "threshold_low": 0,
+      "threshold_high": 1,
+      "images": [
+        "115",
+        0
+      ]
+    },
+    "class_type": "Image Canny Filter"
+  },
+  "98": {
+    "inputs": {
+      "seed": 2590
+    },
+    "class_type": "seed _O"
+  },
+  "104": {
+    "inputs": {
+      "text": "a photo of a printed circuit board, pcb, (((ultrarealistic))), hdr, 8k"
+    },
+    "class_type": "Text _O"
+  },
+  "106": {
+    "inputs": {
+      "text": "comics, cartoon, blur, text"
+    },
+    "class_type": "Text _O"
+  },
+  "110": {
+    "inputs": {
+      "use_cpu": "false",
+      "midas_type": "DPT_Large",
+      "invert_depth": "false",
+      "image": [
+        "115",
+        0
+      ],
+      "midas_model": [
+        "111",
+        0
+      ]
+    },
+    "class_type": "MiDaS Depth Approximation"
+  },
+  "111": {
+    "inputs": {
+      "midas_model": "DPT_Large"
+    },
+    "class_type": "MiDaS Model Loader"
+  },
+  "112": {
+    "inputs": {
+      "image": [
+        "55",
+        0
+      ]
+    },
+    "class_type": "ImageInvert"
+  },
+  "115": {
+    "inputs": {
+      "feathering": 0,
+      "feather_second_pass": "false",
+      "left_padding": 192,
+      "right_padding": 192,
+      "top_padding": 272,
+      "bottom_padding": 272,
+      "image": [
+        "49",
+        0
+      ]
+    },
+    "class_type": "Image Padding"
+  },
+  "119": {
+    "inputs": {
+      "feathering": 0,
+      "feather_second_pass": "false",
+      "left_padding": 192,
+      "right_padding": 192,
+      "top_padding": 272,
+      "bottom_padding": 272,
+      "image": [
+        "112",
+        0
+      ]
+    },
+    "class_type": "Image Padding"
+  },
+  "125": {
+    "inputs": {
+      "top": 272,
+      "left": 192,
+      "right": 832,
+      "bottom": 752,
+      "image": [
+        "20",
+        0
+      ]
+    },
+    "class_type": "Image Crop Location"
+  },
+  "126": {
+    "inputs": {
+      "text_a": [
+        "49",
+        1
+      ],
+      "text_b": [
+        "127",
+        0
+      ],
+      "linebreak_addition": "false",
+      "text_c": [
+        "128",
+        0
+      ],
+      "delimiter": "-"
+    },
+    "class_type": "Text Concatenate"
+  },
+  "127": {
+    "inputs": {
+      "text": ""
+    },
+    "class_type": "Text _O"
+  },
+  "128": {
+    "inputs": {
+      "text": ""
+    },
+    "class_type": "Text _O"
+  },
+  "130": {
+    "inputs": {
+      "ipadapter_file": "ip-adapter-plus_sdxl_vit-h.bin"
+    },
+    "class_type": "IPAdapterModelLoader"
+  },
+  "131": {
+    "inputs": {
+      "weight": 1,
+      "noise": 0.5,
+      "weight_type": "original",
+      "ipadapter": [
+        "130",
+        0
+      ],
+      "clip_vision": [
+        "132",
+        0
+      ],
+      "image": [
+        "145",
+        0
+      ],
+      "model": [
+        "4",
+        0
+      ]
+    },
+    "class_type": "IPAdapterApply"
+  },
+  "132": {
+    "inputs": {
+      "clip_name": "CLIP-ViT-H-14.bin"
+    },
+    "class_type": "CLIPVisionLoader"
+  },
+  "133": {
+    "inputs": {
+      "images": [
+        "115",
+        0
+      ]
+    },
+    "class_type": "Images to RGB"
+  },
+  "134": {
+    "inputs": {
+      "images": [
+        "115",
+        0
+      ]
+    },
+    "class_type": "PreviewImage"
+  },
+  "135": {
+    "inputs": {
+      "images": [
+        "119",
+        0
+      ]
+    },
+    "class_type": "PreviewImage"
+  },
+  "145": {
+    "inputs": {
+      "hue_shift": 0.094,
+      "image": [
+        "133",
+        0
+      ]
+    },
+    "class_type": "Image Rotate Hue"
+  },
+  "150": {
+    "inputs": {
+      "images": [
+        "145",
+        0
+      ]
+    },
+    "class_type": "PreviewImage"
+  }
+}

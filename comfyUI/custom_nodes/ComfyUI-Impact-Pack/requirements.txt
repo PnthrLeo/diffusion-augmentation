@@ -1,0 +1,5 @@
+segment-anything
+scikit-image
+piexif
+transformers
+opencv-python-headless
