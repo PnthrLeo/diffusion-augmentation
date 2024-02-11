@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    command: python preprocessing_scripts/${POSTPROCESSING_SCRIPT} --orig_data_path /app/${ORIG_DATA_PATH} --inpainted_data_path /app/${INPAINTED_DATA_PATH} --final_dataset_path /app/${FINAL_DATASET_PATH} --inp_img_per_orig_img ${INP_IMG_PER_ORIG_IMG} --not_inpainted_data_path /app/${NOT_INPAINTED_DATA_PATH:-None}
+    network_mode: "host"
+    depends_on:
+      comfyui:
+        condition: service_healthy
+    volumes:
+      - ./data:/app/data

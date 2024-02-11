@@ -466,7 +466,7 @@
         "122",
         0
       ],
-      "delimiter": "_"
+      "delimiter": "-"
     },
     "class_type": "Text Concatenate"
   },
