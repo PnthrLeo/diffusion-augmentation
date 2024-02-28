@@ -50,7 +50,7 @@
   },
   "11": {
     "inputs": {
-      "control_net_name": "control-lora-depth-rank256-sdxl.safetensors"
+      "control_net_name": "controlnet-depth-sdxl-1.0.safetensors"
     },
     "class_type": "ControlNetLoader"
   },

@@ -50,7 +50,7 @@
   },
   "11": {
     "inputs": {
-      "control_net_name": "control-lora-depth-rank256-sdxl.safetensors"
+      "control_net_name": "controlnet-depth-sdxl-1.0.safetensors"
     },
     "class_type": "ControlNetLoader"
   },
@@ -423,7 +423,7 @@
   },
   "130": {
     "inputs": {
-      "ipadapter_file": "ip-adapter-plus_sdxl_vit-h.bin"
+      "ipadapter_file": "ip-adapter-plus_sdxl_vit-h.safetensors"
     },
     "class_type": "IPAdapterModelLoader"
   },
@@ -453,7 +453,7 @@
   },
   "132": {
     "inputs": {
-      "clip_name": "CLIP-ViT-H-14.bin"
+      "clip_name": "CLIP-ViT-H-14.safetensors"
     },
     "class_type": "CLIPVisionLoader"
   },
