@@ -13,4 +13,6 @@ models/comfyUI_models/sams
 models/comfyUI_models/ultralytics
 
 # Ignore data
-data
+data/mvtec
+data/pcb
+data/pothole

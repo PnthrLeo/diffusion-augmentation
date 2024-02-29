@@ -4,8 +4,5 @@ services:
     build: .
     command: python preprocessing_scripts/${PREPROCESSING_SCRIPT} --orig_data_path /app/${ORIG_DATA_PATH}
     network_mode: "host"
-    depends_on:
-      comfyui:
-        condition: service_healthy
     volumes:
       - ./data:/app/data

@@ -28,7 +28,7 @@ def make_cvs(orig_data, inpainted_data_folder, cvs_folder, inp_img_per_orig_img=
 
     for cv_idx, interval in enumerate(cv_test_intervals):
         cv_folder = cvs_folder / f'cv{cv_idx}'
-        cv_folder.mkdir(exist_ok=True)
+        cv_folder.mkdir(exist_ok=True, parents=True)
         val_folder = cv_folder / 'images' / 'val'
         val_folder.mkdir(exist_ok=True, parents=True)
         train_folder = cv_folder / 'images' / 'train'
@@ -67,7 +67,7 @@ def make_cvs(orig_data, inpainted_data_folder, cvs_folder, inp_img_per_orig_img=
     if not_inpainted_cvs_folder is not None:
         for cv_idx, interval in enumerate(cv_test_intervals):
             cv_folder = not_inpainted_cvs_folder / f'cv{cv_idx}'
-            cv_folder.mkdir(exist_ok=True)
+            cv_folder.mkdir(exist_ok=True, parents=True)
             val_folder = cv_folder / 'images' / 'val'
             val_folder.mkdir(exist_ok=True, parents=True)
             train_folder = cv_folder / 'images' / 'train'
@@ -98,7 +98,7 @@ def make_cvs(orig_data, inpainted_data_folder, cvs_folder, inp_img_per_orig_img=
     
     
 def gen_yolo_labels(orig_data, image_folder, label_folder):
-    gt_folder = orig_data / 'ground_truth'
+    gt_folder = orig_data / 'bottle' / 'ground_truth'
     categories = {'broken_large': 0, 'broken_small': 1, 'contamination': 2, 'good': 3}
     
     for image_path in image_folder.glob('*.png'):        
@@ -113,7 +113,7 @@ def gen_yolo_labels(orig_data, image_folder, label_folder):
             with open(label_folder / f'{image_path.stem}.txt', 'w') as f:
                 pass
         else:
-            mask = cv2.imread(str(gt_folder / category / f'{image_path.stem.split("-")[0]}-mask.png'), cv2.IMREAD_GRAYSCALE)
+            mask = cv2.imread(str(gt_folder / category / f'{image_path.stem.split("-")[0]}_mask.png'), cv2.IMREAD_GRAYSCALE)
             polygons = Mask(mask).polygons()
             with open(label_folder / f'{image_path.stem}.txt', 'w') as f:
                 for point_list in polygons.points:
@@ -145,7 +145,7 @@ if __name__ == '__main__':
     make_cvs(orig_data, inpainted_data_folder, cvs_folder, inp_img_per_orig_img, not_inpainted_cvs_folder)
     
     for cv_idx in range(4):
-        cv_folder = cvs_folder / f'cv{cv_idx}'
+        cv_folder = cvs_folder / 'bottle' / f'cv{cv_idx}'
         train_images_folder = cv_folder / 'images' / 'train'
         val_images_folder = cv_folder / 'images' / 'val'
         
@@ -154,12 +154,12 @@ if __name__ == '__main__':
         train_labels_folder.mkdir(exist_ok=True, parents=True)
         val_labels_folder.mkdir(exist_ok=True, parents=True)
         
-        gen_yolo_labels(train_images_folder, train_labels_folder)
-        gen_yolo_labels(val_images_folder, val_labels_folder)
+        gen_yolo_labels(orig_data, train_images_folder, train_labels_folder)
+        gen_yolo_labels(orig_data, val_images_folder, val_labels_folder)
 
     if not_inpainted_cvs_folder is not None:
         for cv_idx in range(4):
-            cv_folder = not_inpainted_cvs_folder / f'cv{cv_idx}'
+            cv_folder = not_inpainted_cvs_folder / 'bottle' / f'cv{cv_idx}'
             train_images_folder = cv_folder / 'images' / 'train'
             val_images_folder = cv_folder / 'images' / 'val'
             
@@ -168,6 +168,6 @@ if __name__ == '__main__':
             train_labels_folder.mkdir(exist_ok=True, parents=True)
             val_labels_folder.mkdir(exist_ok=True, parents=True)
             
-            gen_yolo_labels(train_images_folder, train_labels_folder)
-            gen_yolo_labels(val_images_folder, val_labels_folder)
+            gen_yolo_labels(orig_data, train_images_folder, train_labels_folder)
+            gen_yolo_labels(orig_data, val_images_folder, val_labels_folder)
     
