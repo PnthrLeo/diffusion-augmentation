@@ -1,5 +1,3 @@
-
-
 # Image Augmentation for Object Detection and Segmentation with Diffusion Models
 
 **Authors**: [Leon Useinov](https://github.com/PnthrLeo)\,
@@ -76,17 +74,19 @@ DATASET_PATH=data/pothole/orig INPAINTING_OUTPUT_PATH=data/pothole/pothole-inpai
 Third, run postprocessing scripts (to get final training datasets):
 ```bash
 # Example of running postprocessing for MVTec AD Bottle dataset (1, 2, 3 versions)
-ORIG_DATA_PATH=data/mvtec/orig INPAINTED_DATA_PATH=data/mvtec/mvtec-inpainting/mvtec-inpainting-1 FINAL_DATASET_PATH=data/mvtec/mvtec-datasets/mvtec-with-inpainting-1 INP_IMG_PER_ORIG_IMG=15 NOT_INPAINTED_DATA_PATH=data/mvtec/mvtec-datasets/mvtec-no-inpainting POSTPROCESSING_SCRIPT
-=mvtec.py  docker compose -f docker-compose-postprocessing.yaml up
-ORIG_DATA_PATH=data/mvtec/orig INPAINTED_DATA_PATH=data/mvtec/mvtec-inpainting/mvtec-inpainting-2 FINAL_DATASET_PATH=data/mvtec/mvtec-datasets/mvtec-with-inpainting-2 INP_IMG_PER_ORIG_IMG=15 NOT_INPAINTED_DATA_PATH=data/mvtec/mvtec-datasets/mvtec-no-inpainting POSTPROCESSING_SCRIPT
-=mvtec.py  docker compose -f docker-compose-postprocessing.yaml up
-ORIG_DATA_PATH=data/mvtec/orig INPAINTED_DATA_PATH=data/mvtec/mvtec-inpainting/mvtec-inpainting-3 FINAL_DATASET_PATH=data/mvtec/mvtec-datasets/mvtec-with-inpainting-3 INP_IMG_PER_ORIG_IMG=15 NOT_INPAINTED_DATA_PATH=data/mvtec/mvtec-datasets/mvtec-no-inpainting POSTPROCESSING_SCRIPT
-=mvtec.py  docker compose -f docker-compose-postprocessing.yaml up
+ORIG_DATA_PATH=data/mvtec/orig INPAINTED_DATA_PATH=data/mvtec/mvtec-inpainting/mvtec-inpainting-1 FINAL_DATASET_PATH=data/mvtec/mvtec-datasets/mvtec-with-inpainting-1 INP_IMG_PER_ORIG_IMG=15 NOT_INPAINTED_DATA_PATH=data/mvtec/mvtec-datasets/mvtec-no-inpainting POSTPROCESSING_SCRIPT=mvtec.py  docker compose -f docker-compose-postprocessing.yaml up
+ORIG_DATA_PATH=data/mvtec/orig INPAINTED_DATA_PATH=data/mvtec/mvtec-inpainting/mvtec-inpainting-2 FINAL_DATASET_PATH=data/mvtec/mvtec-datasets/mvtec-with-inpainting-2 INP_IMG_PER_ORIG_IMG=15 NOT_INPAINTED_DATA_PATH=data/mvtec/mvtec-datasets/mvtec-no-inpainting POSTPROCESSING_SCRIPT=mvtec.py  docker compose -f docker-compose-postprocessing.yaml up
+ORIG_DATA_PATH=data/mvtec/orig INPAINTED_DATA_PATH=data/mvtec/mvtec-inpainting/mvtec-inpainting-3 FINAL_DATASET_PATH=data/mvtec/mvtec-datasets/mvtec-with-inpainting-3 INP_IMG_PER_ORIG_IMG=15 NOT_INPAINTED_DATA_PATH=data/mvtec/mvtec-datasets/mvtec-no-inpainting POSTPROCESSING_SCRIPT=mvtec.py  docker compose -f docker-compose-postprocessing.yaml up
 
 # Example of running postprocessing for PCB Defects dataset (1, 2, 3 versions)
+ORIG_DATA_PATH=data/pcb/orig INPAINTED_DATA_PATH=data/pcb/pcb-inpainting/pcb-inpainting-1 FINAL_DATASET_PATH=data/pcb/pcb-datasets/pcb-with-inpainting-1 INP_IMG_PER_ORIG_IMG=6 NOT_INPAINTED_DATA_PATH=data/pcb/pcb-datasets/pcb-no-inpainting POSTPROCESSING_SCRIPT=pcb.py  docker compose -f docker-compose-postprocessing.yaml up
+ORIG_DATA_PATH=data/pcb/orig INPAINTED_DATA_PATH=data/pcb/pcb-inpainting/pcb-inpainting-2 FINAL_DATASET_PATH=data/pcb/pcb-datasets/pcb-with-inpainting-2 INP_IMG_PER_ORIG_IMG=6 NOT_INPAINTED_DATA_PATH=data/pcb/pcb-datasets/pcb-no-inpainting POSTPROCESSING_SCRIPT=pcb.py  docker compose -f docker-compose-postprocessing.yaml up
+ORIG_DATA_PATH=data/pcb/orig INPAINTED_DATA_PATH=data/pcb/pcb-inpainting/pcb-inpainting-3 FINAL_DATASET_PATH=data/pcb/pcb-datasets/pcb-with-inpainting-3 INP_IMG_PER_ORIG_IMG=6 NOT_INPAINTED_DATA_PATH=data/pcb/pcb-datasets/pcb-no-inpainting POSTPROCESSING_SCRIPT=pcb.py  docker compose -f docker-compose-postprocessing.yaml up
 
 # Example of running postprocessing for Potholes dataset (1, 2, 3 versions)
-
+ORIG_DATA_PATH=data/pothole/orig INPAINTED_DATA_PATH=data/pothole/pothole-inpainting/pothole-inpainting-1 FINAL_DATASET_PATH=data/pothole/pothole-datasets/pothole-with-inpainting-1 INP_IMG_PER_ORIG_IMG=6 NOT_INPAINTED_DATA_PATH=data/pothole/pothole-datasets/pothole-no-inpainting POSTPROCESSING_SCRIPT=pothole.py  docker compose -f docker-compose-postprocessing.yaml up
+ORIG_DATA_PATH=data/pothole/orig INPAINTED_DATA_PATH=data/pothole/pothole-inpainting/pothole-inpainting-2 FINAL_DATASET_PATH=data/pothole/pothole-datasets/pothole-with-inpainting-2 INP_IMG_PER_ORIG_IMG=6 NOT_INPAINTED_DATA_PATH=data/pothole/pothole-datasets/pothole-no-inpainting POSTPROCESSING_SCRIPT=pothole.py  docker compose -f docker-compose-postprocessing.yaml up
+ORIG_DATA_PATH=data/pothole/orig INPAINTED_DATA_PATH=data/pothole/pothole-inpainting/pothole-inpainting-3 FINAL_DATASET_PATH=data/pothole/pothole-datasets/pothole-with-inpainting-3 INP_IMG_PER_ORIG_IMG=6 NOT_INPAINTED_DATA_PATH=data/pothole/pothole-datasets/pothole-no-inpainting POSTPROCESSING_SCRIPT=pothole.py  docker compose -f docker-compose-postprocessing.yaml up
 ```
 ## Acknowledgements
 
